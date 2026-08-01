@@ -288,5 +288,7 @@ def request_help():
 #yha pe url_for jo h na woh login page mtlb function jo rkha h uska naam leta  h
 
 
+import os
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
