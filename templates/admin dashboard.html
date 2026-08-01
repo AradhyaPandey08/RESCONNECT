@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin page</title>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="user_body">
+    <div class="dashboard">
+        <div class="header">
+    <h1>welcome this is admin page</h1>
+    <a href="/logout" >
+        <button class="btn logout">logout</button></a></div>
+
+        {% for request in requests %}
+<DIV CLASS="HELP">
+    <div class="card">
+
+        <h2>{{ request[4] }}</h2>
+
+        <p><b>Name:</b> {{ request[0] }}</p>
+
+        <p><b>Mobile:</b> {{ request[1] }}</p>
+
+        <p><b>Emergency Mobile:</b> {{ request[2] }}</p>
+
+        <p><b>Status:</b> {{ request[5] }}</p>
+
+        {% if request[5] == "Pending" %}
+
+<form action="{{ url_for('claim', request_id=request[3]) }}" method="POST">
+    <button class="btn user" type="submit">Claim</button>
+</form> </div></div>
+
+{% else %}
+
+    {% if request[6] == admin_id %}
+
+        <p><b>✅ Claimed by You</b></p>
+
+    {% else %}
+
+        <p><b>✅ Claimed by {{ request[7] }}</b></p>
+
+    {% endif %}
+
+{% endif %}
+
+
+        <hr>
+
+    </div>
+
+    {% endfor %}
+    
+</body>
+</html>

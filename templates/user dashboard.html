@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="user_body">
+
+<div class="dashboard">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="header">
+
+        <h1>Welcome to ResConnect</h1>
+
+        <a href="/logout" class="btn logout">Logout</a>
+
+    </div>
+
+
+
+    <!-- ================= HELP SECTION ================= -->
+
+    <div class="help-section">
+
+        <h2>Choose the Help You Need</h2>
+<br>
+        <div class="FEATURES">
+
+            <form action="/request_help" method="POST">
+                <input type="hidden" name="category" value="Food">
+                <button class="feature_btn" type="submit">
+                    🍲 Food
+                </button>
+            </form>
+
+            <form action="/request_help" method="POST">
+                <input type="hidden" name="category" value="RESCUE">
+                <button class="feature_btn" type="submit">
+                    🚑 Rescue
+                </button>
+            </form>
+
+            <form action="/request_help" method="POST">
+                <input type="hidden" name="category" value="SHELTER">
+                <button class="feature_btn" type="submit">
+                    🏠 Shelter
+                </button>
+            </form>
+
+            <form action="/request_help" method="POST">
+                <input type="hidden" name="category" value="MEDICAL">
+                <button class="feature_btn" type="submit">
+                    ❤️ Medical
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= REQUEST HISTORY ================= -->
+
+    <div class="request-history">
+
+        <h2>My Requests</h2>
+
+        {% for request in user_requests %}
+
+        <div class="request-card">
+
+            <p><strong>Category:</strong> {{ request[0] }}</p>
+
+            {% if request[1] == "Pending" %}
+
+                <p>Status : Pending</p>
+
+            {% else %}
+
+                <p>Status : Claimed</p>
+                <p>Accepted By : {{ request[2] }}</p>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

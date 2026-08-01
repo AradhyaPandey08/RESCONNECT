@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resconnect</title>
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="index">
+   <!-- admin page  -->
+    <Div class="LOGIN">
+    <form  action="/register" method="POST">
+         <h1>PLEASE FILL THE DETAILS</h1>
+        <input type="text" name="name" placeholder="NAME">
+        <BR></BR>
+        <input type="email" name="email" placeholder="EMAIL">
+        <BR></BR>
+        <input type="number" name="mobile" placeholder="MOBILE NO">
+        <BR></BR>
+        <input type="NUMBER" name="mobile2" placeholder="EMERGENCY MOBILE NO">
+        <Br></Br>
+        <input type="password" name="password" placeholder="PASSWORD">
+        <BR></BR>
+        <button class="btn user" type="submit">SUBMIT</button></form></DIV>
+
+
+    
+</body>
+</html>
